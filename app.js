@@ -4,7 +4,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const path = require('path');
 const config = require('./config/database');
-
+const serverless = require('serverless-http');
 const app = express();
 
 // Connect to MongoDB
@@ -35,9 +35,19 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/', require('./routes/auth'));
-app.use('/dashboard', require('./routes/dashboard'));
-app.use('/issues', require('./routes/issues'));
+app.use('/.netlify/functions/app', require('./routes/auth'));
+app.use('/.netlify/functions/app/dashboard', require('./routes/dashboard'));
+app.use('/.netlify/functions/app/issues', require('./routes/issues'));
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, console.log(`Server started on port ${PORT}`));
+// Default route for checking if the app is running
+app.get('/.netlify/functions/app', (req, res) => {
+    res.send('App is running..');
+});
+
+module.exports.handler = serverless(app);
+
+// Local development
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+}
