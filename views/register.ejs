@@ -1,0 +1,56 @@
+<%- include('partials/header') %>
+    <h1>Register</h1>
+    <form action="/register" method="POST">
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="contact">Contact:</label>
+            <input type="tel" id="contact" name="contact" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="isLawyer">
+      <input type="checkbox" id="isLawyer" name="isLawyer">
+      I am a lawyer
+    </label>
+        </div>
+        <div id="lawyerFields" style="display: none;">
+            <div>
+                <label for="consultingPrice">Consulting Price:</label>
+                <input type="number" id="consultingPrice" name="consultingPrice">
+            </div>
+            <div>
+                <label for="degree">Degree:</label>
+                <input type="text" id="degree" name="degree">
+            </div>
+            <div>
+                <label for="pastCases">Past Cases:</label>
+                <textarea id="pastCases" name="pastCases"></textarea>
+            </div>
+            <div>
+                <label for="niches">Niches:</label>
+                <select id="niches" name="niches" multiple>
+        <option value="criminal">Criminal Law</option>
+        <option value="civil">Civil Law</option>
+        <option value="corporate">Corporate Law</option>
+        <option value="family">Family Law</option>
+        <option value="intellectual_property">Intellectual Property</option>
+      </select>
+            </div>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+    <%- include('partials/footer') %>

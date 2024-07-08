@@ -1,0 +1,46 @@
+<%- include('partials/header') %>
+    <div class="container">
+        <h1>Client Dashboard</h1>
+        <h2>Post an Issue</h2>
+        <div class="form-container">
+            <form action="/issues/create" method="POST" id="issueForm">
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="niche">Niche:</label>
+                    <select id="niche" name="niche" required>
+                    <option value="">Select a niche</option>
+                    <option value="criminal">Criminal Law</option>
+                    <option value="civil">Civil Law</option>
+                    <option value="corporate">Corporate Law</option>
+                    <option value="family">Family Law</option>
+                    <option value="intellectual_property">Intellectual Property</option>
+                </select>
+                </div>
+                <button type="submit" class="btn">Post Issue</button>
+            </form>
+        </div>
+
+        <h2>Search Lawyers</h2>
+        <div class="form-container">
+            <form id="searchLawyersForm">
+                <div class="form-group">
+                    <label for="searchNiche">Niche:</label>
+                    <select id="searchNiche" name="searchNiche" required>
+                    <option value="">Select a niche</option>
+                    <option value="criminal">Criminal Law</option>
+                    <option value="civil">Civil Law</option>
+                    <option value="corporate">Corporate Law</option>
+                    <option value="family">Family Law</option>
+                    <option value="intellectual_property">Intellectual Property</option>
+                </select>
+                </div>
+                <button type="submit" class="btn">Search Lawyers</button>
+            </form>
+        </div>
+
+        <div id="searchResults"></div>
+    </div>
+    <%- include('partials/footer') %>

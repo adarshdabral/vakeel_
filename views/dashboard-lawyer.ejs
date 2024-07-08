@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+    <div class="container">
+        <h1>Lawyer Dashboard</h1>
+        <h2>Posted Issues</h2>
+        <% if (issues && issues.length > 0) { %>
+            <ul class="issues-list">
+                <% issues.forEach(issue => { %>
+                    <li>
+                        <h3>
+                            <%= issue.niche %>
+                        </h3>
+                        <p>
+                            <%= issue.description %>
+                        </p>
+                        <p>Posted by:
+                            <%= issue.user.firstName %>
+                                <%= issue.user.lastName %>
+                        </p>
+                        <button onclick="sendEmail('<%= issue.user.email %>')" class="btn">Contact Client</button>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } else { %>
+                <p>No issues found matching your niches.</p>
+                <% } %>
+    </div>
+    <%- include('partials/footer') %>
